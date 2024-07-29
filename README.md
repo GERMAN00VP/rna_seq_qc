@@ -15,16 +15,6 @@ This function processes the input DataFrame (`data`) to eliminate very low count
 - `sample_sizes` (pd.DataFrame): A DataFrame with the desired values per sample at each percentage.
 - `df_prob` (pd.DataFrame): A DataFrame with the probability of gene appearance per sample.
 
-#### Example Usage:
-
-```python
-import pandas as pd
-
-# Load your data
-data = pd.read_csv('your_data.csv')
-
-# Compute sample sizes and probabilities
-sample_sizes, df_prob = compute_sample_sizes_and_probabilities(data)
 
 ### `compute_unique_counts`
 
@@ -48,3 +38,18 @@ Executes parallel computations to count unique indices in samples and show progr
 
 #### Returns:
 - `pd.DataFrame`: DataFrame containing the count of unique indices for each sample size.
+
+#### Example Usage:
+
+```python
+import pandas as pd
+
+# Load your data
+data = pd.read_csv('your_data.csv')
+
+# Compute sample sizes and probabilities
+sample_sizes, df_prob = compute_sample_sizes_and_probabilities(data)
+
+# Compute the rarefaction table
+df_rarefied = parallel_compute(df_prob, sample_sizes)
+```
